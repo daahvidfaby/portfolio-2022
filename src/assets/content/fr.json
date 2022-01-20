@@ -1,0 +1,47 @@
+{
+    "intro" : "Fort de trois années d'expérience en <strong>développement de solutions web</strong> pour l'immobilier, suivi de deux ans dans la <strong>création de site web</strong> en agence, me voici lancé dans une toute nouvelle aventure : le <strong>freelance</strong>.",
+    "consulting" : {
+        "title" : "Des compétences pour <strong>vous accompagner</strong> au mieux",
+        "text" : "Une bonne <strong>expérience utilisateur</strong> est l'élément clé d'une solution numérique. Le secret ? Une <strong>navigation fluide</strong> et claire. Pour cela, rien de mieux qu'un code <strong>optimisé</strong> et un choix d'outils adaptés."
+    },
+    "skills" : [
+        {
+            "title" : "Front end",
+            "list" : [
+                "Javascript",
+                "ReactJS",
+                "HTML/CSS",
+                "Tailwind"
+            ]
+        },
+        {
+            "title" : "Back end",
+            "list" : [
+                "PHP",
+                "Wordpress",
+                "Node.js"
+            ]
+        },
+        {
+            "title" : "Automatisation",
+            "list" : [
+                "Webpack",
+                "Gulp",
+                "SASS/LESS"
+            ]
+        }
+    ],
+    "typology" : {
+        "title" : "Pour un projet adapté à <strong>vos besoins</strong>",
+        "text" : "Savoir comment <strong>architecturer un projet</strong> peut parfois paraître compliqué. Je suis là pour vous guider dans les <strong>choix stratégiques</strong> de votre projet, afin de trouver la solution la plus appropriée à <strong>vos ambitions</strong>."
+    },
+    "contact" : {
+        "title" : "Vous souhaitez en apprendre davantage ou me faire part de <strong>votre projet</strong> ?",
+        "fields" : {
+            "name" : "Nom",
+            "email" : "E-mail",
+            "phone" : "Téléphone",
+            "message" : "Message"
+        }
+    }
+}
