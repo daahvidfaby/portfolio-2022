@@ -1,4 +1,105 @@
 /****
+    FONTS
+***/
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../fonts/playfairdisplay-black-webfont.woff2') format('woff2'),
+         url('../fonts/playfairdisplay-black-webfont.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../fonts/playfairdisplay-bold-webfont.woff2') format('woff2'),
+         url('../fonts/playfairdisplay-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../fonts/playfairdisplay-regular-webfont.woff2') format('woff2'),
+         url('../fonts/playfairdisplay-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+$font-01 : 'Playfair Display';
+
+/****
     VARIABLES
 ***/
 
+$color-01 : #F0EEE5;
+$color-02 : #304E37;
+$color-03 : #687C6F;
+
+
+$breakpoints: (
+    sm: 576px,
+    md: 992px,
+    lg: 1330px,
+  );
+
+
+/****
+    MIXINS
+***/
+
+@mixin breakpoint($breakpoint) {
+    // If the key exists in the map
+    @if map-has-key($breakpoints, $breakpoint) {
+        // Prints a media query based on the value
+        @media (min-width: map-get($breakpoints, $breakpoint)) {
+        @content;
+        }
+    }
+
+    // If the key doesn't exist in the map
+    @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+            + "Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+}
+
+
+
+/****
+    BASIC STYLING
+***/
+html {
+    font-size: .625em; /* fallback IE8+ */
+    font-size: calc(1em * .625); /* IE9-IE11 math fixing. See http://bit.ly/1g4X0bX */
+}
+
+body {
+    background-color: $color-01;
+    color: $color-02;
+    font-size: 1.6em;
+}
+
+.container {
+    padding-left: 1.6em;
+    padding-right: 1.6em;
+    max-width: 75em;
+    margin: 0 auto;
+
+    @include breakpoint(sm) {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    @include breakpoint(md) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+
+/****
+    SECTIONS
+***/
+
+@import './sections/header.scss';

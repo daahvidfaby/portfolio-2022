@@ -42,6 +42,10 @@
             "email" : "E-mail",
             "phone" : "Téléphone",
             "message" : "Message"
-        }
+        },
+        "cta" : "Contactez-moi !"
+    },
+    "footer" : {
+        "legals" : "Mentions légales"
     }
 }

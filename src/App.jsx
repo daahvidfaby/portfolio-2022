@@ -1,43 +1,49 @@
+
+import content from './assets/content/fr.json';
+import parse from 'html-react-parser';
+import Hero from './sections/Hero';
+import Introduction from './sections/Introduction';
+import Consulting from './sections/Consulting';
+import Typology from './sections/Typology';
+import Contact from './sections/Contact';
+import Header from './sections/Header';
+
+
 function App() {
 
   return (
     <>
-    <header>
-      David Faby
+    
+    <Header />
+    <Hero />
+    <Introduction intro={parse(content.intro)} />
 
-      <nav>
-        <ul>
-          <li>FR</li>
-          <li>EN</li>
-        </ul>
-      </nav>
-    </header>
+    <Consulting 
+      title={parse(content.consulting.title)} 
+      text={parse(content.consulting.text)}
+      skills={content.skills}
+      />
 
-    <section className="hero">
+    <Typology title={parse(content.typology.title)} text={parse(content.typology.text)} />
 
-    </section>
+    <Contact title={parse(content.contact.title)} fields={content.contact.fields} cta={content.contact.cta}/>
 
-    <section className="introduction">
+    <footer className="footer">
 
-    </section>
+      <div className="container">
 
-    <section className="consulting">
+          <div className="footer__contact">
+            <a href="mailto:contact@davidfaby.fr">contact@davidfaby.fr</a>
+          </div>
 
-      <div className="consulting__content"></div>
-      <div className="consulting__skills"></div>
+          <ul className="footer__links">
+            <li><a href="#">{content.footer.legals}</a></li>
+            <li><a href="#">Github</a></li>
+            <li><a href="#">CV</a></li>
+          </ul>
 
-    </section>
-
-    <section className="project-typology">
-
-    </section>
-
-    <section className="contact">
-
-    </section>
-
-
-    <footer></footer>
+      </div>
+    </footer>
 
     </>
   )
