@@ -1,0 +1,21 @@
+.title {
+    font-family: $font-01;
+
+    strong {
+        color: $color-04;
+    }
+}
+
+.title--large {
+    font-size: rem(28);
+    font-weight: 800;
+    margin-bottom: rem(24);
+
+    @include breakpoint(md) {
+        font-size: rem(40);
+    }
+
+    @include breakpoint(lg) {
+        font-size: rem(48);
+    }
+}

@@ -1,0 +1,36 @@
+.hero {
+    position: relative;
+    margin-top: rem(40);
+    margin-bottom: rem(40);
+    padding-top: rem(72);
+
+    &__title {
+        position: relative;
+        z-index: 2;
+        font-size: 3rem;
+        line-height: 1;
+        font-weight: 900;
+
+        &__first {
+            display: block;
+        }
+
+        &__second {
+            display: block;
+            margin-left: 20%;
+            color: $color-04;
+        }
+    }
+
+    &__picture {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        width: 10rem;
+
+        img {
+            width: 100%;
+        }
+    }
+}

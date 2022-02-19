@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:string";
+
 /****
     FONTS
 ***/
@@ -26,7 +29,26 @@
     font-style: normal;
 }
 
+
+@font-face {
+    font-family: 'Metropolis';
+    src: url('../fonts/metropolis-regular-webfont.woff2') format('woff2'),
+         url('../fonts/metropolis-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Metropolis';
+    src: url('../fonts/metropolis-semibold-webfont.woff2') format('woff2'),
+         url('../fonts/metropolis-semibold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
 $font-01 : 'Playfair Display';
+$font-02 : 'Metropolis';
 
 /****
     VARIABLES
@@ -35,6 +57,7 @@ $font-01 : 'Playfair Display';
 $color-01 : #F0EEE5;
 $color-02 : #304E37;
 $color-03 : #687C6F;
+$color-04 : #C8774A;
 
 
 $breakpoints: (
@@ -49,6 +72,7 @@ $breakpoints: (
 ***/
 
 @mixin breakpoint($breakpoint) {
+
     // If the key exists in the map
     @if map-has-key($breakpoints, $breakpoint) {
         // Prints a media query based on the value
@@ -67,22 +91,49 @@ $breakpoints: (
 
 
 /****
-    BASIC STYLING
+    FUNCTIONS
 ***/
-html {
-    font-size: .625em; /* fallback IE8+ */
-    font-size: calc(1em * .625); /* IE9-IE11 math fixing. See http://bit.ly/1g4X0bX */
+
+$html-font-size: 16px;
+@function stripUnit($value) {
+    @return math.div($value, $value * 0 + 1);
+}
+@function rem($pxValue) {
+    @return #{math.div(stripUnit($pxValue), stripUnit($html-font-size))}rem;
 }
 
-body {
+
+
+/****
+    BASIC STYLING
+***/
+
+@import './basic/reset.scss';
+@import './basic/titles.scss';
+@import './basic/texts.scss';
+
+
+html {
+    font-family: $font-02;
+    font-size: rem(16);
+    line-height: 1.45;
+}
+
+.page-container {
     background-color: $color-01;
     color: $color-02;
-    font-size: 1.6em;
+
+    transition: all 0.2s;
+    
+    &.dark-mode {
+        background-color: $color-02;
+        color: $color-01;
+    }
 }
 
 .container {
-    padding-left: 1.6em;
-    padding-right: 1.6em;
+    padding-left: rem(20);
+    padding-right: rem(20);
     max-width: 75em;
     margin: 0 auto;
 
@@ -103,3 +154,6 @@ body {
 ***/
 
 @import './sections/header.scss';
+@import './sections/hero.scss';
+@import './sections/introduction.scss';
+@import './sections/consulting.scss';

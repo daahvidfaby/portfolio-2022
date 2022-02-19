@@ -4,7 +4,7 @@ function Introduction({intro}) {
     return (
       <div className="container">
         <section className="introduction">
-          {intro}
+          <p>{intro}</p>
         </section>
       </div>
     )

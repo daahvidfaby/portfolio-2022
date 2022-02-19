@@ -12,6 +12,7 @@
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-scroll-detect": "^1.2.0",
     "sass": "^1.49.0"
   },
   "devDependencies": {
