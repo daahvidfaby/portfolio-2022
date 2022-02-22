@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import ReactScrollDetect, { DetectSection } from 'react-scroll-detect';
 import content from './assets/content/fr.json';
 import parse from 'html-react-parser';
 import Hero from './sections/Hero';
@@ -16,22 +15,16 @@ function App() {
 
   return (
     <div className={"page-container " + (currentSection === 1 ? 'dark-mode':'')}>
-      <ReactScrollDetect triggerPoint='top' onChange={handleSectionChange}>
       <Header />
-      <DetectSection>
         <Hero />
         <Introduction intro={parse(content.intro)} />
-      </DetectSection>
 
-      <DetectSection>
         <Consulting 
           title={parse(content.consulting.title)} 
           text={parse(content.consulting.text)}
           skills={content.skills}
         />
-      </DetectSection>
-
-      <DetectSection>
+   
       <Typology title={parse(content.typology.title)} text={parse(content.typology.text)} />
 
       <Contact title={parse(content.contact.title)} fields={content.contact.fields} cta={content.contact.cta}/>
@@ -52,9 +45,6 @@ function App() {
 
         </div>
       </footer>
-      </DetectSection>
-
-      </ReactScrollDetect>
     </div>
     
   )
