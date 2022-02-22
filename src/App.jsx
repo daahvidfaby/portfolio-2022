@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import content from './assets/content/fr.json';
 import parse from 'html-react-parser';
 import Hero from './sections/Hero';
@@ -11,21 +11,39 @@ import Header from './sections/Header';
 
 function App() {
 
-  const [currentSection, handleSectionChange] = useState(0);
+  const [darkMode, setDarkMode] = useState(false);
+  const darkModeSection = useRef(null);
 
+  const handleSectionChange = () => {
+    if(darkModeSection.current.getBoundingClientRect().top < 30 && darkModeSection.current.getBoundingClientRect().bottom > 0) {
+      setDarkMode(true);
+    } else {
+      setDarkMode(false);
+    }
+  }
+
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      handleSectionChange();
+  })})
+
+  
   return (
-    <div className={"page-container " + (currentSection === 1 ? 'dark-mode':'')}>
+    <div className={"page-container " + (darkMode === true ? 'dark-mode':'')}>
       <Header />
-        <Hero />
-        <Introduction intro={parse(content.intro)} />
+      <Hero />
+      <Introduction intro={parse(content.intro)} />
 
+      <div ref={darkModeSection}>
         <Consulting 
           title={parse(content.consulting.title)} 
           text={parse(content.consulting.text)}
           skills={content.skills}
         />
-   
-      <Typology title={parse(content.typology.title)} text={parse(content.typology.text)} />
+    
+        <Typology title={parse(content.typology.title)} text={parse(content.typology.text)} />
+      </div>
 
       <Contact title={parse(content.contact.title)} fields={content.contact.fields} cta={content.contact.cta}/>
 
