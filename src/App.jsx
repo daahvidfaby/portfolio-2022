@@ -16,7 +16,7 @@ function App() {
   const darkModeSection = useRef(null);
 
   const handleSectionChange = () => {
-    if(darkModeSection.current.getBoundingClientRect().top < 30 && darkModeSection.current.getBoundingClientRect().bottom > 0) {
+    if(darkModeSection.current.getBoundingClientRect().top < 200 && darkModeSection.current.getBoundingClientRect().bottom > 0) {
       setDarkMode(true);
     } else {
       setDarkMode(false);
