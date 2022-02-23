@@ -7,6 +7,7 @@ import Consulting from './sections/Consulting';
 import Typology from './sections/Typology';
 import Contact from './sections/Contact';
 import Header from './sections/Header';
+import Footer from './sections/Footer';
 
 
 function App() {
@@ -42,27 +43,14 @@ function App() {
           skills={content.skills}
         />
     
-        <Typology title={parse(content.typology.title)} text={parse(content.typology.text)} />
       </div>
+
+      <Typology title={parse(content.typology.title)} text={parse(content.typology.text)} />
 
       <Contact title={parse(content.contact.title)} fields={content.contact.fields} cta={content.contact.cta}/>
 
-      <footer className="footer">
+      <Footer legals={content.footer.legals}/>
 
-        <div className="container">
-
-            <div className="footer__contact">
-              <a href="mailto:contact@davidfaby.fr">contact@davidfaby.fr</a>
-            </div>
-
-            <ul className="footer__links">
-              <li><a href="#">{content.footer.legals}</a></li>
-              <li><a href="#">Github</a></li>
-              <li><a href="#">CV</a></li>
-            </ul>
-
-        </div>
-      </footer>
     </div>
     
   )

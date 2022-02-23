@@ -1,4 +1,5 @@
 import parse from 'html-react-parser';
+import Accordion from '../components/Accordion';
 
 function Consulting({title, text, skills}) {
     return (
@@ -12,16 +13,13 @@ function Consulting({title, text, skills}) {
             {
               skills.map((skillItem, key) => {
                 return (
-                  <div className="skill" key={key}>
-                    <h3>{skillItem.title}</h3>
-                    <ul>
-                      {
-                        skillItem.list.map((skill, skillkey) => {
-                          return <li key={skillkey}>{skill}</li>
-                        })
-                      }
-                    </ul>
-                  </div>
+                  <Accordion title={skillItem.title} key={key}>
+                    {
+                      skillItem.list.map((skill, skillkey) => {
+                        return <li key={skillkey}>{skill}</li>
+                      })
+                    }
+                  </Accordion>
                 )
               })
             }

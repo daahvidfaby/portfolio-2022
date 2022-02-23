@@ -1,0 +1,27 @@
+.contact {
+    margin-bottom: rem(80);
+
+    &__form {
+        padding: rem(32) 0;
+    }
+    
+    &__label {
+        display: block;
+        margin-bottom: rem(8);
+    }
+    
+    /* reset */
+    &__input {
+        display: block;
+        background: transparent;
+        border: 0;
+        border-bottom: rem(2) solid $color-02;
+        height: rem(32);
+        width: 100%;
+        margin-bottom: rem(46);
+
+        &--textarea {
+            height: rem(120);
+        }
+    }
+}

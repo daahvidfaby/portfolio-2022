@@ -4,8 +4,8 @@ function Typology({title, text}) {
     return (
       <div className="container">
         <section className="project-typology">
-            <h2 className="title">{title}</h2>
-            <p>{}</p>
+            <h2 className="title title--large">{title}</h2>
+            <p>{text}</p>
         </section>
       </div>
     )

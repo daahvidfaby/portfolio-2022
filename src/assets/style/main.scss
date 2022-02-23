@@ -124,7 +124,7 @@ html {
     color: $color-02;
 
     transition: all 0.2s;
-    
+
     &.dark-mode {
         background-color: $color-02;
         color: $color-01;
@@ -148,6 +148,14 @@ html {
     }
 }
 
+/****
+    COMPONENTS
+***/
+
+@import './components/button.scss';
+@import './components/accordion.scss';
+
+
 
 /****
     SECTIONS
@@ -157,3 +165,6 @@ html {
 @import './sections/hero.scss';
 @import './sections/introduction.scss';
 @import './sections/consulting.scss';
+@import './sections/typology.scss';
+@import './sections/contact.scss';
+@import './sections/footer.scss';

@@ -1,0 +1,45 @@
+.accordion {
+    overflow: hidden;
+    margin-bottom: rem(38);
+
+    
+
+    .accordion__title {
+        display: flex;
+        justify-content: space-between;
+        font-family: $font-01;
+        font-size: rem(24);
+        font-weight: 600;
+        font-style: italic;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+        padding: rem(8) 0;
+        margin-bottom: rem(12);
+        
+    
+        &::after {
+            content: "+";
+            font-style: normal;
+            font-family: $font-01;
+        }
+    }
+
+    .accordion__content {
+        height: 0;
+        opacity: 0;
+        transform: translateY(-10%);
+        transition: all 0.2s ease-in;
+
+        line-height: 2;
+    }
+
+    &.opened {
+
+        .accordion__content {
+            height: auto;
+            opacity: 1;
+            transform: unset;
+        }
+
+    }
+}
