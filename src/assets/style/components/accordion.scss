@@ -4,7 +4,7 @@
 
     
 
-    .accordion__title {
+    &__title {
         display: flex;
         justify-content: space-between;
         font-family: $font-01;
@@ -19,12 +19,14 @@
     
         &::after {
             content: "+";
+            width: rem(18);
+            text-align: center;
             font-style: normal;
-            font-family: $font-01;
+            font-family: $font-02;
         }
     }
 
-    .accordion__content {
+    &__content {
         height: 0;
         opacity: 0;
         transform: translateY(-10%);
@@ -34,6 +36,12 @@
     }
 
     &.opened {
+
+        .accordion__title {
+            &::after {
+                content: "-";
+            }
+        }
 
         .accordion__content {
             height: auto;
