@@ -33,7 +33,7 @@ function App() {
         requestRef.current = requestAnimationFrame(handleSectionChange);
       return () => cancelAnimationFrame(requestRef.current);
     })
-  })
+  }, [])
 
   
   return (
