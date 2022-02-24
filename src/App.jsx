@@ -35,7 +35,7 @@ function App() {
       })
 
     if (window.DeviceOrientationEvent) {
-      window.addEventListener('deviceorientation', () => alert('ok'), false);
+      window.addEventListener('deviceorientation', (event) => console.log(event), false);
     }
   }, [])
 
