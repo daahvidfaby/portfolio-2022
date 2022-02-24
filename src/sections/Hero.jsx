@@ -1,4 +1,4 @@
-import David from '../assets/images/david.png';
+import David from '../assets/images/david.webp';
 
 function Hero() {
     return (

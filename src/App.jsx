@@ -31,8 +31,12 @@ function App() {
     () => {
       window.addEventListener('scroll', () => {
         requestRef.current = requestAnimationFrame(handleSectionChange);
-      return () => cancelAnimationFrame(requestRef.current);
-    })
+        return () => cancelAnimationFrame(requestRef.current);
+      })
+
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', () => alert('ok'), false);
+    }
   }, [])
 
   
