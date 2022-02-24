@@ -31,7 +31,8 @@ function App() {
     setHeroTransformProperties({
       transform: 'translateX('+ deviceGammaOrientation * 0.2 +')'
     })
-    requestRef.current = requestAnimationFrame(handleSectionChange);
+    console.log(deviceGammaOrientation)
+    requestRef.current = requestAnimationFrame(handleHeroOrientation);
   }
 
 
