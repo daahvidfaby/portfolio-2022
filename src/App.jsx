@@ -64,7 +64,7 @@ function App() {
                       }
               }
           position = position / -100;
-          let style = {transform: 'translateX('+ deviceGammaOrientation * 0.2 +'px)'};
+          let style = {transform: "rotateY(" + position + "deg)"};
           
           }
       }, false);
