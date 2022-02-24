@@ -63,7 +63,7 @@ function App() {
                   position = -limit;
                       }
               }
-          position = position / -100;
+          position = position / -10;
           let style = {transform: "rotateY(" + position + "deg)"};
           setHeroTransformProperties(style);
           }
