@@ -1,6 +1,6 @@
 import David from '../assets/images/david.webp';
 
-function Hero() {
+function Hero({orientationTransformProperties}) {
     return (
         <div className="container">
             <section className="hero">
@@ -8,7 +8,7 @@ function Hero() {
                     <span className="hero__title__first">full stack</span> <span className="hero__title__second">developer</span>
                 </h1>
                 <div className="hero__picture">
-                    <img src={David} alt="David"/>
+                    <img src={David} alt="David" style={orientationTransformProperties}/>
                 </div>
             </section>
         </div>

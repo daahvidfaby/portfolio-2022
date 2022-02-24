@@ -13,6 +13,7 @@ import Footer from './sections/Footer';
 function App() {
 
   const [darkMode, setDarkMode] = useState(false);
+  const [heroTransformProperties, setHeroTransformProperties] = useState({transform: 'unset'});
   const darkModeSection = useRef(null);
   const requestRef = useRef();
 
@@ -26,6 +27,12 @@ function App() {
     requestRef.current = requestAnimationFrame(handleSectionChange);
   }
 
+  const handleHeroOrientation = (deviceGammaOrientation) => {
+    setHeroTransformProperties({
+      transform: 'translateX('+ deviceGammaOrientation * 0.2 +')'
+    })
+  }
+
 
   useEffect(
     () => {
@@ -35,7 +42,9 @@ function App() {
       })
 
     if (window.DeviceOrientationEvent) {
-      window.addEventListener('deviceorientation', (event) => console.log(event), false);
+      window.addEventListener('deviceorientation', (event) => {
+        requestRef.current = requestAnimationFrame(handleHeroOrientation);
+      }, false);
     }
   }, [])
 
@@ -43,7 +52,7 @@ function App() {
   return (
     <div className={"page-container " + (darkMode === true ? 'dark-mode':'')}>
       <Header />
-      <Hero />
+      <Hero orientationTransformProperties={heroTransformProperties} />
       <Introduction intro={parse(content.intro)} />
 
       <div ref={darkModeSection}>
