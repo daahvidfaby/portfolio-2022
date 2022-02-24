@@ -62,7 +62,7 @@ function App() {
           } else {
             useAxis = 'gamma'
           }
-          let position = Math.round(event[useAx]);
+          let position = Math.round(event[useAxis]);
           if (Math.abs(position) > limit) {
              if (position > limit) {
                   position = limit;
