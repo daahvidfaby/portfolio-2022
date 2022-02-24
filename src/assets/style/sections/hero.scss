@@ -2,14 +2,18 @@
     position: relative;
     margin-top: rem(40);
     margin-bottom: rem(40);
-    padding-top: rem(72);
+    padding-top: rem(48);
 
     &__title {
         position: relative;
         z-index: 2;
-        font-size: 3rem;
+        font-size: rem(36);
         line-height: 1;
         font-weight: 900;
+
+        @include breakpoint(xs) {
+            font-size: rem(48);
+        }
 
         &__first {
             display: block;
@@ -27,10 +31,23 @@
         top: 0;
         right: 0;
         display: block;
-        width: 10rem;
+        width: rem(134);
 
         img {
+            position: relative;
+            z-index: 1;
             width: 100%;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: rem(48);
+            left: rem(24);
+            width: rem(50);
+            height: rem(50);
+            border-radius: 100%;
+            background-color: $color-02;
         }
     }
 }
