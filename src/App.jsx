@@ -43,6 +43,7 @@ function App() {
   let counter = 0;
   const updateRate = 1;
   const limit = 45;
+  let useAxis;
 
 
   useEffect(
@@ -61,7 +62,7 @@ function App() {
           } else {
             useAxis = 'gamma'
           }
-          let position = Math.round(event[useAxis]);
+          let position = Math.round(event[useAx]);
           if (Math.abs(position) > limit) {
              if (position > limit) {
                   position = limit;
