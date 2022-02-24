@@ -6,8 +6,10 @@ function Consulting({title, text, skills}) {
       <div className="container">
         <section className="consulting">
           <div className="consulting__content">
-            <h2 className="title title--large">{title}</h2>
-            <p>{text}</p>
+            <div className="consulting__content__text">
+              <h2 className="title title--large">{title}</h2>
+              <p>{text}</p>
+            </div>
           </div>
           <div className="consulting__skills">
             {

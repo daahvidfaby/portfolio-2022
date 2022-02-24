@@ -4,15 +4,17 @@ function Footer({legals}) {
 
             <div className="container">
 
-                <div className="footer__contact">
-                <a href="mailto:contact@davidfaby.fr" className="footer__contact__link">contact@davidfaby.fr</a>
-                </div>
+                <div className="footer__content">
+                    <div className="footer__contact">
+                        <a href="mailto:contact@davidfaby.fr" className="footer__contact__link">contact@davidfaby.fr</a>
+                    </div>
 
-                <ul className="footer__links">
-                <li><a href="#" className="footer__link">{legals}</a></li>
-                <li><a href="#" className="footer__link">Github</a></li>
-                <li><a href="#" className="footer__link">CV</a></li>
-                </ul>
+                    <ul className="footer__links">
+                        <li><a href="#" className="footer__link">{legals}</a></li>
+                        <li><a href="#" className="footer__link">Github</a></li>
+                        <li><a href="#" className="footer__link">CV</a></li>
+                    </ul>
+                </div>
 
             </div>
       </footer>

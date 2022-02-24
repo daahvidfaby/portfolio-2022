@@ -19,7 +19,7 @@ function App() {
 
 
   const handleSectionChange = () => {
-    if(darkModeSection.current.getBoundingClientRect().top < 200 && darkModeSection.current.getBoundingClientRect().bottom > 0) {
+    if(darkModeSection.current.getBoundingClientRect().top < 200 && darkModeSection.current.getBoundingClientRect().bottom > 100) {
       setDarkMode(true);
     } else {
       setDarkMode(false);

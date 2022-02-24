@@ -12,6 +12,8 @@
     &__contact {
         margin-bottom: rem(32);
 
+        
+
         &__link {
             font-family: $font-01;
             font-size: rem(28);
@@ -19,6 +21,33 @@
             color: $color-01;
             text-decoration: none;
         }
+    }
+
+    @include breakpoint(md) {
+        &__content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        } 
+
+        &__contact {
+            margin-bottom: 0;
+
+            &__link {
+                font-size: rem(40);
+            }
+        }
+
+        &__links {
+            display: flex;
+            justify-content: space-between;
+            width: 30%;
+        }
+
+        &__link {
+            margin-bottom: 0;
+        }
+    
     }
 
 }

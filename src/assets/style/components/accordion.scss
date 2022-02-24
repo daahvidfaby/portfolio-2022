@@ -15,6 +15,11 @@
         border-bottom: 1px solid;
         padding: rem(8) 0;
         margin-bottom: rem(12);
+        cursor: pointer;
+
+        @include breakpoint(md) {
+            font-size: rem(32);
+        }
         
     
         &::after {
@@ -23,6 +28,11 @@
             text-align: center;
             font-style: normal;
             font-family: $font-02;
+            font-size: rem(24);
+
+            @include breakpoint(md) {
+                line-height: 1.75;
+            }
         }
     }
 
@@ -30,9 +40,13 @@
         height: 0;
         opacity: 0;
         transform: translateY(-10%);
-        transition: all 0.2s ease-in;
+        transition: transform 0.2s ease-in, opacity 0.16s ease-in;
 
         line-height: 2;
+
+        @include breakpoint(md) {
+            font-size: rem(20);
+        }
     }
 
     &.opened {

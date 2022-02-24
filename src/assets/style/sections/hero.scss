@@ -4,6 +4,17 @@
     margin-bottom: rem(56);
     padding-top: rem(48);
 
+    @include breakpoint(md) {
+        display: flex;
+        align-items: center;
+        margin-top: rem(32);
+        padding-top: rem(48);
+    }
+
+    @include breakpoint(lg) {
+        margin-bottom: rem(80);
+    }
+
     &__title {
         position: relative;
         z-index: 2;
@@ -13,11 +24,23 @@
 
         @include breakpoint(xs) {
             font-size: rem(48);
+            font-size: 13vw;
         }
 
         @include breakpoint(sm) {
-            font-size: rem(56);
+            margin-bottom: rem(136);
+            font-size: 10vw;
         }
+
+        @include breakpoint(md) {
+            width: 60%;
+            margin-bottom: 0;
+        }
+
+        @include breakpoint(lg) {
+            font-size: rem(135);
+        }
+
 
         &__first {
             display: block;
@@ -27,6 +50,10 @@
             display: block;
             margin-left: 20%;
             color: $color-04;
+
+            @include breakpoint(md) {
+                margin-left: 8%;
+            }
         }
     }
 
@@ -36,6 +63,11 @@
         right: 0;
         display: block;
         width: 40%;
+
+        @include breakpoint(md) {
+            position: relative;
+            right: rem(-20);
+        }
 
         img {
             position: relative;
@@ -51,6 +83,18 @@
             height: 30%;
             border-radius: 100%;
             background-color: $color-02;
+
+            @include breakpoint(sm) {
+                width: 55%;
+                height: 55%;
+            }
+
+            @include breakpoint(md) {
+                top: rem(96);
+                left: rem(40);
+                width: 55%;
+                height: 55%;
+            }
         }
     }
 }

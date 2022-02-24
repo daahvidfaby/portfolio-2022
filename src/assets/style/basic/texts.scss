@@ -1,6 +1,15 @@
 p {
     font-family: $font-02;
 
+    @include breakpoint(sm) {
+        font-size: rem(20);
+    }
+
+    @include breakpoint(md) {
+        font-size: rem(22);
+        line-height: 1.6;
+    }
+
     strong {
         font-weight: 600;
     }

@@ -4,4 +4,24 @@
     &__content {
         margin-bottom: rem(40);
     }
+
+    @include breakpoint(md) {
+        display: flex;
+        margin-bottom: rem(240);
+
+        &__content {
+            width: 50%;
+            margin-right: 10%;
+        
+            &__text {
+                position: sticky;
+                top: rem(18);
+            }
+        }
+
+        &__skills {
+            width: 40%;
+            margin-top: rem(24);
+        }
+    }
 }
