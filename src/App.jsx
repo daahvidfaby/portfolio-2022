@@ -46,6 +46,28 @@ function App() {
   let useAxis;
 
 
+  const handleDeviceOrientation = (event) => {
+    if (updateNow()) {
+
+      if (window.matchMedia("(orientation: landscape)").matches) {
+        useAxis = 'beta'
+      } else {
+        useAxis = 'gamma'
+      }
+      let position = Math.round(event[useAxis]);
+      if (Math.abs(position) > limit) {
+        if (position > limit) {
+              position = limit;
+          } else {
+              position = -limit;
+                  }
+          }
+      position = position / -10;
+
+      setOrientationPosition(position);
+      }
+  }
+
   useEffect(
     () => {
       window.addEventListener('scroll', () => {
@@ -53,28 +75,14 @@ function App() {
         return () => cancelAnimationFrame(requestRef.current);
       })
 
-    if (window.DeviceOrientationEvent) {
-      window.addEventListener('deviceorientation', function(event) {
-        if (updateNow()) {
-
-          if (window.matchMedia("(orientation: landscape)").matches) {
-            useAxis = 'beta'
-          } else {
-            useAxis = 'gamma'
-          }
-          let position = Math.round(event[useAxis]);
-          if (Math.abs(position) > limit) {
-             if (position > limit) {
-                  position = limit;
-              } else {
-                  position = -limit;
-                      }
-              }
-          position = position / -10;
-
+      window.addEventListener('mousemove', function(event) {
+          let position = Math.round(event.screenX - (document.body.clientWidth / 2));
+          position = position / -200;
           setOrientationPosition(position);
-          }
-      }, false);
+      })
+
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', handleDeviceOrientation, false);
     }
   }, [])
 
