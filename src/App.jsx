@@ -66,7 +66,7 @@ function App() {
           position = position / -10;
 
           console.log(position)
-          let style = {transform: "rotateY(" + position + "deg) translateX(" + position * 2 + ")"};
+          let style = {transform: "rotateY(" + position + "deg) translateX(" + position * 2 + "px)"};
           setHeroTransformProperties(style);
           }
       }, false);
