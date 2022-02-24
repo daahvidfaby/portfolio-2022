@@ -29,10 +29,10 @@ function App() {
 
   const handleHeroOrientation = (deviceGammaOrientation) => {
     setHeroTransformProperties({
-      transform: 'translateX('+ deviceGammaOrientation * 0.2 +')'
+      transform: 'translateX('+ deviceGammaOrientation * 0.2 +'px)'
     })
     console.log(deviceGammaOrientation)
-    requestRef.current = requestAnimationFrame(handleHeroOrientation);
+    requestRef.current = requestAnimationFrame(handleHeroOrientation(deviceGammaOrientation));
   }
 
 
@@ -45,7 +45,7 @@ function App() {
 
     if (window.DeviceOrientationEvent) {
       window.addEventListener('deviceorientation', (event) => {
-        requestRef.current = requestAnimationFrame(handleHeroOrientation);
+        requestRef.current = requestAnimationFrame(handleHeroOrientation(event.gamma));
       }, false);
     }
   }, [])
