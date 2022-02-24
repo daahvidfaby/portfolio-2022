@@ -13,7 +13,7 @@ import Footer from './sections/Footer';
 function App() {
 
   const [darkMode, setDarkMode] = useState(false);
-  const [heroTransformProperties, setHeroTransformProperties] = useState({transform: 'unset'});
+  const [orientationPosition, setOrientationPosition] = useState({transform: 'unset'});
   const darkModeSection = useRef(null);
   const requestRef = useRef();
 
@@ -65,9 +65,7 @@ function App() {
               }
           position = position / -10;
 
-          console.log(position)
-          let style = {transform: "rotateY(" + position + "deg) translateX(" + position * 2 + "px)"};
-          setHeroTransformProperties(style);
+          setOrientationPosition(position);
           }
       }, false);
     }
@@ -77,7 +75,7 @@ function App() {
   return (
     <div className={"page-container " + (darkMode === true ? 'dark-mode':'')}>
       <Header />
-      <Hero orientationTransformProperties={heroTransformProperties} />
+      <Hero position={orientationPosition} />
       <Introduction intro={parse(content.intro)} />
 
       <div ref={darkModeSection}>

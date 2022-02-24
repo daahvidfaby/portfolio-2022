@@ -43,8 +43,7 @@
             width: 100%;
         }
 
-        &::before {
-            content: "";
+        &__circle {
             position: absolute;
             top: rem(48);
             left: rem(24);
