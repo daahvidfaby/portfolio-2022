@@ -55,7 +55,13 @@ function App() {
     if (window.DeviceOrientationEvent) {
       window.addEventListener('deviceorientation', function(event) {
         if (updateNow()) {
-          let position = Math.round(event.gamma);
+
+          if (window.matchMedia("(orientation: landscape)").matches) {
+            useAxis = 'beta'
+          } else {
+            useAxis = 'gamma'
+          }
+          let position = Math.round(event[useAxis]);
           if (Math.abs(position) > limit) {
              if (position > limit) {
                   position = limit;
