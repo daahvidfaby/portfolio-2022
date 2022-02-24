@@ -41,7 +41,7 @@ function App() {
   };
 
   let counter = 0;
-  const updateRate = 10;
+  const updateRate = 1;
   const limit = 45;
 
 
