@@ -36,6 +36,15 @@ function App() {
   }
 
 
+  function updateNow() {
+    return counter++ % updateRate === 0;
+  };
+
+  let counter = 0;
+  const updateRate = 10;
+  const limit = 45;
+
+
   useEffect(
     () => {
       window.addEventListener('scroll', () => {
@@ -44,8 +53,20 @@ function App() {
       })
 
     if (window.DeviceOrientationEvent) {
-      window.addEventListener('deviceorientation', (event) => {
-        requestRef.current = requestAnimationFrame(handleHeroOrientation(event.gamma));
+      window.addEventListener('deviceorientation', function(event) {
+        if (updateNow()) {
+          let position = Math.round(event.gamma);
+          if (Math.abs(position) > limit) {
+             if (position > limit) {
+                  position = limit;
+              } else {
+                  position = -limit;
+                      }
+              }
+          position = position / -100;
+          let style = {transform: 'translateX('+ deviceGammaOrientation * 0.2 +'px)'};
+          
+          }
       }, false);
     }
   }, [])
