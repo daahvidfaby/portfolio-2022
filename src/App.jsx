@@ -14,6 +14,8 @@ function App() {
 
   const [darkMode, setDarkMode] = useState(false);
   const darkModeSection = useRef(null);
+  const requestRef = useRef();
+
 
   const handleSectionChange = () => {
     if(darkModeSection.current.getBoundingClientRect().top < 200 && darkModeSection.current.getBoundingClientRect().bottom > 0) {
@@ -21,13 +23,17 @@ function App() {
     } else {
       setDarkMode(false);
     }
+    requestRef.current = requestAnimationFrame(handleSectionChange);
   }
 
 
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      handleSectionChange();
-  })})
+  useEffect(
+    () => {
+      window.addEventListener('scroll', () => {
+        requestRef.current = requestAnimationFrame(handleSectionChange);
+      return () => cancelAnimationFrame(requestRef.current);
+    })
+  })
 
   
   return (
