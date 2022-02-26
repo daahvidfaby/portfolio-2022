@@ -13,6 +13,7 @@ import Footer from './sections/Footer';
 function App() {
 
   const [darkMode, setDarkMode] = useState(false);
+  const [offset, setOffset] = useState(0);
   const [orientationPosition, setOrientationPosition] = useState({transform: 'unset'});
   const darkModeSection = useRef(null);
   const requestRef = useRef();
@@ -42,7 +43,7 @@ function App() {
 
   let counter = 0;
   const updateRate = 1;
-  const limit = 45;
+  const limit = 20;
   let useAxis;
 
 
@@ -71,6 +72,16 @@ function App() {
   useEffect(
     () => {
       window.addEventListener('scroll', () => {
+        
+        requestAnimationFrame(() => {
+          if (updateNow()) {
+
+            document.documentElement.style.setProperty('--offset', window.scrollY / 10 + "%");
+            document.documentElement.style.setProperty('--size', window.scrollY / 5 + "px");
+            //setOffset(window.scrollY / 10);
+          }
+        });
+
         requestRef.current = requestAnimationFrame(handleSectionChange);
         return () => cancelAnimationFrame(requestRef.current);
       })
@@ -81,7 +92,7 @@ function App() {
           setOrientationPosition(position);
       })
 
-    if (window.DeviceOrientationEvent) {
+    if (window.DeviceOrientationEvent && ('ontouchstart' in document.documentElement && navigator.userAgent.match(/Mobi/))) {
       window.addEventListener('deviceorientation', handleDeviceOrientation, false);
     }
   }, [])

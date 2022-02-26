@@ -1,6 +1,11 @@
 @use "sass:math";
 @use "sass:string";
 
+:root {
+    --offset: 0%;
+    --size: 0px;
+}
+
 /****
     FONTS
 ***/
@@ -58,6 +63,7 @@ $color-01 : #F0EEE5;
 $color-02 : #304E37;
 $color-03 : #687C6F;
 $color-04 : #C8774A;
+$color-05 : #54715f;
 
 
 $breakpoints: (
@@ -177,3 +183,5 @@ html {
 @import './sections/typology.scss';
 @import './sections/contact.scss';
 @import './sections/footer.scss';
+
+

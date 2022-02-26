@@ -9,9 +9,11 @@
         font-size: rem(28);
         font-weight: 800;
         margin-bottom: rem(24);
+        line-height: 1.3;
     
         @include breakpoint(md) {
             font-size: rem(40);
+            line-height: 1.1;
         }
     
         @include breakpoint(lg) {
