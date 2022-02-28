@@ -6,6 +6,7 @@
     text-decoration: none;
     background: $color-02;
     color: $color-01;
+    border-radius: rem(8);
     font-family: sans-serif;
     font-size: 1rem;
     cursor: pointer;
@@ -15,4 +16,8 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     letter-spacing: rem(0.5);
+
+    &:hover {
+        background-color: $color-03;
+    }
 }

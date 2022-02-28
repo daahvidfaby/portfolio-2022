@@ -43,7 +43,7 @@
             "phone" : "Téléphone",
             "message" : "Message"
         },
-        "cta" : "Contactez-moi !"
+        "cta" : "Envoyer !"
     },
     "footer" : {
         "legals" : "Mentions légales"

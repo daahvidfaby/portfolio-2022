@@ -1,6 +1,6 @@
-function Contact({title, fields, cta}) {
+function Contact({title, fields, cta, id}) {
     return (
-        <div className="container container--small">
+        <div className="container container--small container--spaced" id={id}>
             <section className="contact">
                 <h2 className="title title--large">{title}</h2>
 

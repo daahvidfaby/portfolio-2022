@@ -16,7 +16,10 @@ function App() {
   const [offset, setOffset] = useState(0);
   const [orientationPosition, setOrientationPosition] = useState({transform: 'unset'});
   const darkModeSection = useRef(null);
+  const [showCta, setShowCta] = useState(true);
+  const stickyCtaSection = useRef(null);
   const requestRef = useRef();
+  const offsetRef = useRef(0);
 
 
   const handleSectionChange = () => {
@@ -44,6 +47,7 @@ function App() {
   let counter = 0;
   const updateRate = 1;
   const limit = 20;
+  const stopAnimationsAfterOffset = 50;
   let useAxis;
 
 
@@ -72,28 +76,42 @@ function App() {
   useEffect(
     () => {
       window.addEventListener('scroll', () => {
+
+        offsetRef.current = window.scrollY / 10;
+        setOffset(window.scrollY / 10);
+
+        if(offsetRef.current < stopAnimationsAfterOffset) {
+          requestAnimationFrame(() => {
+            if (updateNow()) {
+              document.documentElement.style.setProperty('--offset', window.scrollY / 10 + "%");
+              document.documentElement.style.setProperty('--size', window.scrollY / 5 + "px");
+            }
+          });
+  
+          requestRef.current = requestAnimationFrame(handleSectionChange);
+          return () => cancelAnimationFrame(requestRef.current);
+        }
+
+        if(stickyCtaSection.current.getBoundingClientRect().bottom >= window.innerHeight) {
+          setShowCta(true);
+        } else {
+          setShowCta(false);
+        }
         
-        requestAnimationFrame(() => {
-          if (updateNow()) {
-
-            document.documentElement.style.setProperty('--offset', window.scrollY / 10 + "%");
-            document.documentElement.style.setProperty('--size', window.scrollY / 5 + "px");
-            //setOffset(window.scrollY / 10);
-          }
-        });
-
-        requestRef.current = requestAnimationFrame(handleSectionChange);
-        return () => cancelAnimationFrame(requestRef.current);
       })
 
       window.addEventListener('mousemove', function(event) {
+        if(offsetRef.current < stopAnimationsAfterOffset) {
           let position = Math.round(event.screenX - (document.body.clientWidth / 2));
           position = position / -200;
           setOrientationPosition(position);
+        }
       })
 
     if (window.DeviceOrientationEvent && ('ontouchstart' in document.documentElement && navigator.userAgent.match(/Mobi/))) {
-      window.addEventListener('deviceorientation', handleDeviceOrientation, false);
+      if(offsetRef.current < stopAnimationsAfterOffset) {
+        window.addEventListener('deviceorientation', handleDeviceOrientation, false);
+      }
     }
   }, [])
 
@@ -101,21 +119,31 @@ function App() {
   return (
     <div className={"page-container " + (darkMode === true ? 'dark-mode':'')}>
       <Header />
-      <Hero position={orientationPosition} />
-      <Introduction intro={parse(content.intro)} />
 
-      <div ref={darkModeSection}>
-        <Consulting 
-          title={parse(content.consulting.title)} 
-          text={parse(content.consulting.text)}
-          skills={content.skills}
-        />
-    
+      <div ref={stickyCtaSection}>
+        <Hero position={orientationPosition} />
+        <Introduction intro={parse(content.intro)} />
+
+        <div ref={darkModeSection}>
+          <Consulting 
+            title={parse(content.consulting.title)} 
+            text={parse(content.consulting.text)}
+            skills={content.skills}
+          />
+        </div>
+
+        <Typology title={parse(content.typology.title)} text={parse(content.typology.text)} />
+
+        <Contact id="contact" title={parse(content.contact.title)} fields={content.contact.fields} cta={content.contact.cta}/>
+
+
+        <div className={'animated-cta-container ' + (offset > 60 && showCta ? 'show' : '')}>
+          <a className={'button animated-cta'} href="#contact">
+            Contactez-moi !
+          </a>
+        </div>
+        
       </div>
-
-      <Typology title={parse(content.typology.title)} text={parse(content.typology.text)} />
-
-      <Contact title={parse(content.contact.title)} fields={content.contact.fields} cta={content.contact.cta}/>
 
       <Footer legals={content.footer.legals}/>
 
