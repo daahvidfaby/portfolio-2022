@@ -49,6 +49,7 @@
             "failure" : "Erreur lors de l'envoi du message, veuillez réessayer ou me contacter via e-mail directement."
         }
     },
+    "contactCta" : "Contactez-moi !",
     "footer" : {
         "legals" : "Mentions légales"
     }

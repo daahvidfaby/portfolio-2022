@@ -1,4 +1,4 @@
-function Header() {
+function Header({onLanguageChange, currentLanguage}) {
     return (
         <div className="container">
             <header className="header">
@@ -9,10 +9,10 @@ function Header() {
                 <nav className="localization-nav">
                     <ul className="localization-nav__list">
                         <li className="localization-nav__list__item"> 
-                            <a href="#" className="localization-nav__list__link localization-nav__list__link--active">FR</a>
+                            <a href="#" onClick={() => onLanguageChange('fr')} className={"localization-nav__list__link " + (currentLanguage === 'fr' ? "localization-nav__list__link--active" : "")}>FR</a>
                         </li>
                         <li className="localization-nav__list__item"> 
-                        <a href="#" className="localization-nav__list__link">EN</a>
+                            <a href="#" onClick={() => onLanguageChange('en')} className={"localization-nav__list__link " + (currentLanguage === 'en' ? "localization-nav__list__link--active" : "")}>EN</a>
                         </li>
                     </ul>
                 </nav>

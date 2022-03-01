@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import content from './assets/content/fr.json';
+import content_fr from './assets/content/fr.json';
+import content_en from './assets/content/en.json';
 import parse from 'html-react-parser';
 import Hero from './sections/Hero';
 import Introduction from './sections/Introduction';
@@ -12,6 +13,10 @@ import Footer from './sections/Footer';
 
 function App() {
 
+  const [content, setContent] = useState(content_fr);
+  const [currentLanguage, setCurrentLanguage] = useState('fr');
+  
+
   const [darkMode, setDarkMode] = useState(false);
   const [offset, setOffset] = useState(0);
   const [orientationPosition, setOrientationPosition] = useState({transform: 'unset'});
@@ -20,6 +25,17 @@ function App() {
   const stickyCtaSection = useRef(null);
   const requestRef = useRef();
   const offsetRef = useRef(0);
+
+
+  const changeLanguage = (languageSlug) => {
+    if(languageSlug === "fr") {
+      setCurrentLanguage('fr')
+      setContent(content_fr)
+    } else {
+      setCurrentLanguage('en')
+      setContent(content_en)
+    }
+  }
 
 
   const handleSectionChange = () => {
@@ -117,7 +133,7 @@ function App() {
   
   return (
     <div className={"page-container " + (darkMode === true ? 'dark-mode':'')}>
-      <Header />
+      <Header onLanguageChange={(languageSlug) => changeLanguage(languageSlug)} currentLanguage={currentLanguage}/>
 
       <Hero position={orientationPosition} />
 
@@ -139,7 +155,7 @@ function App() {
 
         <div className={'animated-cta-container ' + (showCta ? 'show' : '')}>
           <a className={'button animated-cta'} href="#contact">
-            Contactez-moi !
+            {content.contactCta}
           </a>
         </div>
         

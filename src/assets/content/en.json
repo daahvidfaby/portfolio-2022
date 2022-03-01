@@ -2,7 +2,7 @@
     "intro" : "After three years of experience in <strong>web solution development</strong> in real estate branch, followed by two years in <strong>website creation</strong> in a web agency, here I am in a whole new journey : <strong>freelancing</strong>.",
     "consulting" : {
         "title" : "Skills to <strong>guide&nbsp;you</strong> on a good way",
-        "text" : "<strong>User&nbsp;experience</strong> is the key of a succeeding web solution. The secret ? <strong>Smooth&nbsp;</strong> and <strong>clear navigation</strong>. To this end, well <strong>optimized</strong> code and best suited tools are the main ingredients."
+        "text" : "<strong>User&nbsp;experience</strong> is the key of a succeeding web solution. The secret? <strong>Smooth&nbsp;</strong> and <strong>clear navigation</strong>. To this end, well <strong>optimized</strong> code and best suited tools are the main ingredients."
     },
     "skills" : [
         {
@@ -36,7 +36,7 @@
         "text" : "How to best <strong>design&nbsp;a&nbsp;project</strong> might seem complicated sometimes. I am here to help you making <strong>strategic&nbsp;choices</strong> for your project, in order to find a solution that fulfils <strong>your&nbsp;ambitions</strong>."
     },
     "contact" : {
-        "title" : "Would like to get to know more or talk about <strong>your&nbsp;project</strong> ?",
+        "title" : "Would like to get to know more or talk about <strong>your&nbsp;project</strong>?",
         "fields" : {
             "name" : "Name",
             "email" : "Email",
@@ -45,10 +45,11 @@
         },
         "cta" : "Send !",
         "submitResult" : {
-            "success" : "Your message has been sent. I'll contact you very soon !",
+            "success" : "Your message has been sent. I'll contact you very soon!",
             "failure" : "An error has occured, please try again later or send me an email."
         }
     },
+    "contactCta" : "Contact me!",
     "footer" : {
         "legals" : "Legal notices"
     }
