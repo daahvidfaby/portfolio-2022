@@ -18,7 +18,6 @@ function App() {
   
 
   const [darkMode, setDarkMode] = useState(false);
-  const [offset, setOffset] = useState(0);
   const [orientationPosition, setOrientationPosition] = useState({transform: 'unset'});
   const darkModeSection = useRef(null);
   const [showCta, setShowCta] = useState(false);
@@ -48,9 +47,6 @@ function App() {
   }
 
   const handleHeroOrientation = (deviceGammaOrientation) => {
-    setHeroTransformProperties({
-      transform: 'translateX('+ deviceGammaOrientation * 0.2 +'px)'
-    })
     requestRef.current = requestAnimationFrame(handleHeroOrientation(deviceGammaOrientation));
   }
 
@@ -62,7 +58,6 @@ function App() {
   let counter = 0;
   const updateRate = 0.5;
   const limit = 20;
-  const stopAnimationsAfterOffset = 50;
   let useAxis;
 
 
@@ -93,7 +88,6 @@ function App() {
       window.addEventListener('scroll', () => {
 
         offsetRef.current = window.scrollY / 10;
-        setOffset(window.scrollY / 10);
 
         if(stickyCtaSection.current.getBoundingClientRect().top <= 0 && stickyCtaSection.current.getBoundingClientRect().bottom >= (window.innerHeight + 200)) {
           setShowCta(true);
@@ -101,12 +95,10 @@ function App() {
           setShowCta(false);
         }
 
-        if(offsetRef.current < stopAnimationsAfterOffset) {
+        if(stickyCtaSection.current.getBoundingClientRect().top >= 0) {
           requestAnimationFrame(() => {
-            //if (updateNow()) {
               document.documentElement.style.setProperty('--offset', window.scrollY / 10 + "%");
               document.documentElement.style.setProperty('--size', window.scrollY / 5 + "px");
-            //}
           });
   
           requestRef.current = requestAnimationFrame(handleSectionChange);
@@ -116,7 +108,7 @@ function App() {
       });
 
       window.addEventListener('mousemove', function(event) {
-        if(offsetRef.current < stopAnimationsAfterOffset) {
+        if(stickyCtaSection.current.getBoundingClientRect().top >= 0) {
           let position = Math.round(event.screenX - (document.body.clientWidth / 2));
           position = position / -200;
           setOrientationPosition(position);
@@ -124,7 +116,7 @@ function App() {
       })
 
     if (window.DeviceOrientationEvent && ('ontouchstart' in document.documentElement && navigator.userAgent.match(/Mobi/))) {
-      if(offsetRef.current < stopAnimationsAfterOffset) {
+      if(stickyCtaSection.current.getBoundingClientRect().top >= 0) {
         window.addEventListener('deviceorientation', handleDeviceOrientation, false);
       }
     }
