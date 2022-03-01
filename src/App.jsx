@@ -87,10 +87,10 @@ function App() {
 
         if(offsetRef.current < stopAnimationsAfterOffset) {
           requestAnimationFrame(() => {
-            if (updateNow()) {
+            //if (updateNow()) {
               document.documentElement.style.setProperty('--offset', window.scrollY / 10 + "%");
               document.documentElement.style.setProperty('--size', window.scrollY / 5 + "px");
-            }
+            //}
           });
   
           requestRef.current = requestAnimationFrame(handleSectionChange);
