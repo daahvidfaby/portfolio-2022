@@ -79,6 +79,12 @@ function App() {
         offsetRef.current = window.scrollY / 10;
         setOffset(window.scrollY / 10);
 
+        if(stickyCtaSection.current.getBoundingClientRect().top <= 0 && stickyCtaSection.current.getBoundingClientRect().bottom >= window.innerHeight) {
+          setShowCta(true);
+        } else {
+          setShowCta(false);
+        }
+
         if(offsetRef.current < stopAnimationsAfterOffset) {
           requestAnimationFrame(() => {
             if (updateNow()) {
@@ -89,12 +95,6 @@ function App() {
   
           requestRef.current = requestAnimationFrame(handleSectionChange);
           return () => cancelAnimationFrame(requestRef.current);
-        }
-
-        if(stickyCtaSection.current.getBoundingClientRect().top <= 0 && stickyCtaSection.current.getBoundingClientRect().bottom >= window.innerHeight) {
-          setShowCta(true);
-        } else {
-          setShowCta(false);
         }
         
       });
