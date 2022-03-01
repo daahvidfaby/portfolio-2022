@@ -79,7 +79,7 @@ function App() {
         offsetRef.current = window.scrollY / 10;
         setOffset(window.scrollY / 10);
 
-        if(stickyCtaSection.current.getBoundingClientRect().top <= 0 && stickyCtaSection.current.getBoundingClientRect().bottom >= window.innerHeight) {
+        if(stickyCtaSection.current.getBoundingClientRect().top <= 0 && stickyCtaSection.current.getBoundingClientRect().bottom >= (window.innerHeight - 200)) {
           setShowCta(true);
         } else {
           setShowCta(false);
