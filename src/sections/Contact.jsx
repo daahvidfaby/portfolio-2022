@@ -1,10 +1,12 @@
 import {useState} from 'react'
 
-function Contact({title, fields, cta, id}) {
+function Contact({title, fields, cta, id, submitResult}) {
 
     const baseApiUrl = 'https://aqueous-river-46122.herokuapp.com/'; 
 
     const [isLoading, setIsLoading] = useState(null);
+    const [formSubmitted, setFormSubmitted] = useState(false);
+    const [submitSuccess, setSubmitSuccess] = useState(null);
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -30,7 +32,7 @@ function Contact({title, fields, cta, id}) {
           }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
 
         e.preventDefault();
 
@@ -42,27 +44,38 @@ function Contact({title, fields, cta, id}) {
           'phone': phone,
           'message': message
         };
-    
-        fetch(baseApiUrl + 'mail',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        }).then((result) => {
-          return result.json();
-        }).then((json) => {
+
+        try {
+            const response = await fetch(baseApiUrl + 'mail',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(payload)
+            });
+        
+            if (!response.ok) {
+              throw new Error(`Error! status: ${response.status}`);
+            }
+        
+            const result = await response.json();
             setIsLoading(false);
-        });
+            setFormSubmitted(true);
+            setSubmitSuccess(json.success && json.success == true ? true : false);
+            return;
+          } catch (err) {
+            setIsLoading(false);
+            setFormSubmitted(true);
+            setSubmitSuccess(false);
+          }
+    
       }
 
     return (
         <div className="container container--small container--spaced" id={id}>
             <section className="contact">
                 <h2 className="title title--large">{title}</h2>
-
-                {isLoading? 'is loading...':''}
 
                 <form action="#" className="contact__form" onSubmit={handleSubmit}>
 
@@ -89,8 +102,15 @@ function Contact({title, fields, cta, id}) {
                         <textarea name="message"  className="contact__input contact__input--textarea" value={message} onChange={handleInputChange}/>
                     </div>
 
+                    <div className={"contact__submit-result " + (formSubmitted ? 'show ' : '') + (submitSuccess ? 'success ' : 'error ')}>
+                    {
+                        submitSuccess ?
+                            submitResult.success : submitResult.failure
+                    }
+                    </div>
+
                     <div className="contact__button-container">
-                        <input type="submit" className="contact__button button" value={cta}/>
+                        <input type="submit" className="contact__button button" value={(isLoading? '...':cta)}/>
                     </div>
 
                 </form>

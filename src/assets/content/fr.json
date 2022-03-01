@@ -43,7 +43,11 @@
             "phone" : "Téléphone",
             "message" : "Message"
         },
-        "cta" : "Envoyer !"
+        "cta" : "Envoyer !",
+        "submitResult" : {
+            "success" : "Votre message a bien été envoyé. Je vous recontacte rapidement !",
+            "failure" : "Erreur lors de l'envoi du message, veuillez réessayer ou me contacter via e-mail directement."
+        }
     },
     "footer" : {
         "legals" : "Mentions légales"

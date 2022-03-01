@@ -25,6 +25,25 @@
         }
     }
 
+    &__submit-result {
+        display: none;
+        padding: rem(24);
+        margin-bottom: rem(24);
+
+        &.show {
+            display: block;
+        }
+
+        &.success {
+            background-color: $color-02;
+        }
+
+        &.error {
+            background-color: $color-04;
+            color: $color-01;
+        }
+    }
+
     @include breakpoint(md) {
         .title {
             text-align: center;

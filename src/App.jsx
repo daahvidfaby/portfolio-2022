@@ -134,7 +134,7 @@ function App() {
 
         <Typology title={parse(content.typology.title)} text={parse(content.typology.text)} />
 
-        <Contact id="contact" title={parse(content.contact.title)} fields={content.contact.fields} cta={content.contact.cta}/>
+        <Contact id="contact" title={parse(content.contact.title)} fields={content.contact.fields} cta={content.contact.cta} submitResult={content.contact.submitResult}/>
 
 
         <div className={'animated-cta-container ' + (showCta ? 'show' : '')}>
