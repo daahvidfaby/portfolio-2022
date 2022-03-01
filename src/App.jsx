@@ -16,7 +16,7 @@ function App() {
   const [offset, setOffset] = useState(0);
   const [orientationPosition, setOrientationPosition] = useState({transform: 'unset'});
   const darkModeSection = useRef(null);
-  const [showCta, setShowCta] = useState(true);
+  const [showCta, setShowCta] = useState(false);
   const stickyCtaSection = useRef(null);
   const requestRef = useRef();
   const offsetRef = useRef(0);
@@ -35,7 +35,6 @@ function App() {
     setHeroTransformProperties({
       transform: 'translateX('+ deviceGammaOrientation * 0.2 +'px)'
     })
-    console.log(deviceGammaOrientation)
     requestRef.current = requestAnimationFrame(handleHeroOrientation(deviceGammaOrientation));
   }
 
@@ -45,7 +44,7 @@ function App() {
   };
 
   let counter = 0;
-  const updateRate = 1;
+  const updateRate = 0.5;
   const limit = 20;
   const stopAnimationsAfterOffset = 50;
   let useAxis;
@@ -92,13 +91,13 @@ function App() {
           return () => cancelAnimationFrame(requestRef.current);
         }
 
-        if(stickyCtaSection.current.getBoundingClientRect().bottom >= window.innerHeight) {
+        if(stickyCtaSection.current.getBoundingClientRect().top <= 0 && stickyCtaSection.current.getBoundingClientRect().bottom >= window.innerHeight) {
           setShowCta(true);
         } else {
           setShowCta(false);
         }
         
-      })
+      });
 
       window.addEventListener('mousemove', function(event) {
         if(offsetRef.current < stopAnimationsAfterOffset) {
@@ -120,8 +119,9 @@ function App() {
     <div className={"page-container " + (darkMode === true ? 'dark-mode':'')}>
       <Header />
 
+      <Hero position={orientationPosition} />
+
       <div ref={stickyCtaSection}>
-        <Hero position={orientationPosition} />
         <Introduction intro={parse(content.intro)} />
 
         <div ref={darkModeSection}>
@@ -137,7 +137,7 @@ function App() {
         <Contact id="contact" title={parse(content.contact.title)} fields={content.contact.fields} cta={content.contact.cta}/>
 
 
-        <div className={'animated-cta-container ' + (offset > 60 && showCta ? 'show' : '')}>
+        <div className={'animated-cta-container ' + (showCta ? 'show' : '')}>
           <a className={'button animated-cta'} href="#contact">
             Contactez-moi !
           </a>
