@@ -89,7 +89,7 @@ function App() {
 
         offsetRef.current = window.scrollY / 10;
 
-        if(stickyCtaSection.current.getBoundingClientRect().top <= 0 && stickyCtaSection.current.getBoundingClientRect().bottom >= (window.innerHeight + 200)) {
+        if(stickyCtaSection.current.getBoundingClientRect().top <= 0 && stickyCtaSection.current.getBoundingClientRect().bottom >= 0) {
           setShowCta(true);
         } else {
           setShowCta(false);
@@ -142,9 +142,6 @@ function App() {
 
         <Typology title={parse(content.typology.title)} text={parse(content.typology.text)} />
 
-        <Contact id="contact" title={parse(content.contact.title)} fields={content.contact.fields} cta={content.contact.cta} submitResult={content.contact.submitResult}/>
-
-
         <div className={'animated-cta-container ' + (showCta ? 'show' : '')}>
           <a className={'button animated-cta'} href="#contact">
             {content.contactCta}
@@ -152,6 +149,8 @@ function App() {
         </div>
         
       </div>
+
+      <Contact id="contact" title={parse(content.contact.title)} fields={content.contact.fields} cta={content.contact.cta} submitResult={content.contact.submitResult}/>
 
       <Footer legals={content.footer.legals}/>
 
