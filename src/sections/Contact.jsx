@@ -45,6 +45,8 @@ function Contact({title, fields, cta, id, submitResult}) {
           'message': message
         };
 
+        console.log(payload);
+
         try {
             const response = await fetch(baseApiUrl + 'mail',
             {
