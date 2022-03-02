@@ -41,12 +41,13 @@
 
         &__links {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             width: 30%;
         }
 
         &__link {
             margin-bottom: 0;
+            margin-left: rem(24);
         }
     
     }

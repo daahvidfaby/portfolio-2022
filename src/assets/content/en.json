@@ -43,7 +43,7 @@
             "phone" : "Phone",
             "message" : "Message"
         },
-        "cta" : "Send!",
+        "cta" : "Submit!",
         "submitResult" : {
             "success" : "Your message has been sent. I'll contact you very soon!",
             "failure" : "An error has occured, please try again later or send me an email."

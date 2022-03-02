@@ -11,7 +11,7 @@ function Footer({legals}) {
 
                     <ul className="footer__links">
                         {/*<li><a href="#" className="footer__link">{legals}</a></li>*/}
-                        <li><a href="#" className="footer__link">Github</a></li>
+                        <li><a href="https://github.com/daahvidfaby" target="_blank" className="footer__link">Github</a></li>
                         <li><a href="#" className="footer__link">CV</a></li>
                     </ul>
                 </div>
