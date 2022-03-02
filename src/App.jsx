@@ -152,7 +152,7 @@ function App() {
 
       <Contact id="contact" title={parse(content.contact.title)} fields={content.contact.fields} cta={content.contact.cta} submitResult={content.contact.submitResult}/>
 
-      <Footer legals={content.footer.legals}/>
+      <Footer legals={content.footer.legals} linkToCV={(currentLanguage === 'fr' ? 'https://drive.infomaniak.com/app/share/458034/51b75bbe-0c89-4cb4-8550-14da4da20947' : 'https://drive.infomaniak.com/app/share/458034/2e4daa96-ed11-4b52-86c2-c20608be0b4e')}/>
 
     </div>
     

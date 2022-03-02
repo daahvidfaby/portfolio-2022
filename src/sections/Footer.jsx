@@ -1,4 +1,4 @@
-function Footer({legals}) {
+function Footer({legals, linkToCV }) {
     return (
         <footer className="footer">
 
@@ -12,7 +12,7 @@ function Footer({legals}) {
                     <ul className="footer__links">
                         {/*<li><a href="#" className="footer__link">{legals}</a></li>*/}
                         <li><a href="https://github.com/daahvidfaby" target="_blank" className="footer__link">Github</a></li>
-                        <li><a href="#" className="footer__link">CV</a></li>
+                        <li><a href={linkToCV} className="footer__link" target="_blank" >CV</a></li>
                     </ul>
                 </div>
 
