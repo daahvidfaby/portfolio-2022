@@ -62,7 +62,7 @@ function Contact({title, fields, cta, id, submitResult}) {
             const result = await response.json();
             setIsLoading(false);
             setFormSubmitted(true);
-            setSubmitSuccess(json.success && json.success == true ? true : false);
+            setSubmitSuccess(result.success && result.success == true ? true : false);
             return;
           } catch (err) {
             setIsLoading(false);
