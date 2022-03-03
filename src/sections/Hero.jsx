@@ -17,7 +17,7 @@ function Hero({position}) {
                 </h1>
                 <div className="hero__picture">
                     <div className="hero__picture__circle" style={{transform: "translateX(" + position * -1.5 + "px)"}}/>
-                    <img src={David} alt="David" style={{transform: "rotateY(" + position * 2 + "deg) translateX(" + position * 2 + "px) translateY(" + position * -1 + "px)"}}/>
+                    <img src={David} alt="David" style={{transform: "translateX(" + position * 2 + "px) translateY(" + position * -1 + "px)"}}/>
                 </div>
             </section>
         </div>
